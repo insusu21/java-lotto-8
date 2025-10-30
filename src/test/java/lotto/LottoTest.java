@@ -3,8 +3,10 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -21,5 +23,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 로또_번호_오름차순_정렬_테스트() {
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(8,4,2,3,21,45)));
+        List<Integer> sortedLotto = List.of(2,3,4,8,21,45);
+        lotto.lottoSort();
+
+        assertThat(lotto.getNumbers()).isEqualTo(sortedLotto);
+    }
     // TODO: 추가 기능 구현에 따른 테스트 코드 작성
 }
