@@ -9,7 +9,18 @@ public class UserInput {
         }
     }
 
+    private int parseAndValidateInput(String input){
+        int paid;
+        try {
+            paid = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 1000 단위의 숫자를 입력해주세요.");
+        }
 
+        validatePaid(paid);
+
+        return paid;
+    }
 
 
 }
