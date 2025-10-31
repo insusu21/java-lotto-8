@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInput {
     public int inputMoney() {
         while (true) {
+            moneyNoticeWord();
             String input = Console.readLine();
             try{
                 int paid = parseAndValidateInput(input);
@@ -13,6 +14,10 @@ public class UserInput {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private void moneyNoticeWord() {
+        System.out.println("구입금액을 입력해 주세요.");
     }
 
     private void validatePaid(int paid) {
