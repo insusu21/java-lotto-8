@@ -12,9 +12,9 @@ public class LottoStorageTest {
         LottoStorage lottoStorage = new LottoStorage();
         int lottoAmount = 5;
 
-        List<Lotto> Lottos = lottoStorage.lottoStore(lottoAmount);
+        List<Lotto> lottos = lottoStorage.lottoStore(lottoAmount);
 
-        assertThat(Lottos).hasSize(5);
+        assertThat(lottos).hasSize(5);
     }
 
 }
