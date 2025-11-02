@@ -17,12 +17,12 @@ public class UserInput {
     }
 
     private void moneyNoticeWord() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Constants.MONEY_INPUT_MESSAGE);
     }
 
     private void validatePaid(int paid) {
         if (paid % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000 단위의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(Constants.INVALID_ERROR_MESSAGE);
         }
     }
 
@@ -31,7 +31,7 @@ public class UserInput {
         try {
             paid = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 1000 단위의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(Constants.INVALID_ERROR_MESSAGE);
         }
 
         validatePaid(paid);
