@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoStorage {
-    public List<Lotto> lottoStore(int lottoAmount) {
+    public List<Lotto> lottoStore(int paid) {
         List<Lotto> totalLotto = new ArrayList<>();
         RandomNumber randomNumber = new RandomNumber();
-
-        for (int i = 0; i < lottoAmount; i++) {
+        Calculator calculator = new Calculator();
+        for (int i = 0; i < calculator.lottoAmountCalculate(paid); i++) {
             List<Integer> numbers = randomNumber.randomNumberGenerator();
-
             Lotto lotto = new Lotto(numbers);
             lotto.lottoSort();
-
             totalLotto.add(lotto);
         }
         return totalLotto;
