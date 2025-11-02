@@ -104,5 +104,42 @@ public class UserInput {
         }
     }
 
+    // 보너스 번호 입력
+    public int inputBonusNumber(List<Integer> winningNumber) {
+        System.out.println(Constants.INPUT_BONUS_NUMBER_MESSAGE);
+        while (true) {
+            String input = Console.readLine();
+            try {
+                int bonusNumber = parseBonusNumber(input);
+                validateBonusDuplicate(bonusNumber, winningNumber);
+                validateNumberRange(bonusNumber);
+                return bonusNumber;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private int parseBonusNumber(String input) {
+        int bonusNumber;
+        try {
+            bonusNumber = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Constants.BONUS_NUMBER_ERROR_MESSAGE);
+        }
+        return bonusNumber;
+    }
+
+    private void validateBonusDuplicate(int bonusNumber, List<Integer> winningNumber) {
+        if (winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Constants.BONUS_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateNumberRange(int number) {
+        if (number < Constants.MIN_LOTTO_NUMBER || number > Constants.MAX_LOTTO_NUMBER) {
+            throw new IllegalArgumentException(Constants.BONUS_NUMBER_ERROR_MESSAGE);
+        }
+    }
 }
 
