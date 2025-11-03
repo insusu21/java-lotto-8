@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,8 +16,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != Constants.LOTTO_SIZE) {
-            throw new IllegalArgumentException(Constants.LOTTO_SIZE_ERROR_MESSAGE);
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (numbers.size() != Constants.LOTTO_SIZE || numbers.size() != uniqueNumbers.size()) {
+            throw new IllegalArgumentException(Constants.LOTTO_ERROR_MESSAGE);
+        }
+        for (int number : numbers) {
+            if (number < Constants.MIN_LOTTO_NUMBER || number > Constants.MAX_LOTTO_NUMBER) {
+                throw new IllegalArgumentException(Constants.LOTTO_ERROR_MESSAGE);
+            }
         }
     }
 
