@@ -14,6 +14,7 @@ public class OutputView {
 
     public void printWinningStatistic(double rateOfReturn) {
         System.out.println(Constants.STATISTICS_HEADER);
+        System.out.println(Constants.STATISTICS_DIVIDING_LINE);
         for (LottoPrize prize : LottoPrize.values()) {
             if (prize == LottoPrize.LOSE) continue;
 
