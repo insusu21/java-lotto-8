@@ -10,9 +10,9 @@ public class LottoStorageTest {
     @Test
     void 로또는_요청한_장수만큼_반환한다() {
         LottoStorage lottoStorage = new LottoStorage();
-        int lottoAmount = 5;
+        int paid = 5000;
 
-        List<Lotto> lottos = lottoStorage.lottoStore(lottoAmount);
+        List<Lotto> lottos = lottoStorage.lottoStore(paid);
 
         assertThat(lottos).hasSize(5);
     }
