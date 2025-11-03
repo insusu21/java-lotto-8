@@ -11,6 +11,14 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public LottoPrize match(Lotto lotto) {
+        int matchCount = countMatches(lotto);
+
+        boolean hasBonus = lotto.getNumbers().contains(bonusNumber);
+
+        return LottoPrize.valueOf(matchCount, hasBonus);
+    }
+
     private int countMatches(Lotto lotto) {
         List<Integer> userNumbers = lotto.getNumbers();
         List<Integer> winning = winningNumber.getNumbers();
